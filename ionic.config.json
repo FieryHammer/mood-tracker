@@ -1,0 +1,7 @@
+{
+  "name": "mood-tracker",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
