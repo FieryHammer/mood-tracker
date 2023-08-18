@@ -1,0 +1,9 @@
+img {
+  height: auto;
+  width: auto;
+}
+
+ion-modal ion-col.selected {
+  border: 3px solid var(--ion-color-primary);
+  border-radius: 8px;
+}
