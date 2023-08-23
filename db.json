@@ -26,8 +26,11 @@
       "note": "Finally Friday! Had a new PR at the gym as well"
     }
   ],
-  "profile": {
-    "username": "Josh",
-    "email": "test@test.com"
-  }
+  "profile": [
+    {
+      "id": 1,
+      "username": "Josh",
+      "email": "test@test.com"
+    }
+  ]
 }
