@@ -9,10 +9,12 @@
 
 <ion-content>
   <h1>Welcome, Bob</h1>
-  <p class="ion-text-justify">
-    <i>We don't get a chance to do that many things, and every one should be really excellent. Because this is our life. Life is brief, and then you die, you know? So this is what we've chosen to do with our life.</i>
-  </p>
-  <h5 class="ion-text-center">- Steve Jobs</h5>
+  <section *ngIf="quote$| async as quote" class="quote">
+    <p class="ion-text-justify">
+      <i>{{ quote.quote }}</i>
+    </p>
+    <h5 class="ion-text-center">- {{ quote.author }}</h5>
+  </section>
 
   <ion-grid class="ion-text-center">
     <ion-row>

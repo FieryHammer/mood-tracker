@@ -1,16 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
     <ion-title>Sign in</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-text class="ion-text-center" color="tertiary">
-    <h1>mood tracker</h1>
-  </ion-text>
+  <img class="logo" src="/assets/logo/mood-tracker.svg" alt="Mood Tracker">
   <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
     <ion-grid class="ion-padding">
       <ion-row>
