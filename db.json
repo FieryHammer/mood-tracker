@@ -27,6 +27,7 @@
     }
   ],
   "profile": {
+    "id": "test@test.com",
     "username": "Josh",
     "email": "test@test.com"
   }
