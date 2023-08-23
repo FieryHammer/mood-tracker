@@ -4,7 +4,11 @@
 
 export const environment = {
   production: false,
-  quotesApiKey: 'fbtJLpIqjiQ3zvofPzng4Q==9qutw4bnQnbkqLWi'
+  quotesApiUrl: 'https://api.api-ninjas.com/v1/quotes',
+  quotesApiKey: '',
+  backendUrl: 'https://my-json-server.typicode.com/FieryHammer/mood-tracker',
+  profilePath: '/profile',
+  moodsPath: '/moods'
 };
 
 /*

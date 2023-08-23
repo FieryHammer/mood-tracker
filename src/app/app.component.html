@@ -1,5 +1,5 @@
 <ion-app>
-  <ion-split-pane contentId="main-content">
+  <ion-split-pane contentId="main-content" [disabled]="isLoggedOut$ | async">
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
         <ion-list id="inbox-list">
@@ -14,7 +14,15 @@
               <ion-label>Home</ion-label>
             </ion-item>
 
-            <ion-item routerDirection="root" [routerLink]="['tracker']" lines="none" detail="false" routerLinkActive="selected">
+            <ion-item
+              routerDirection="root"
+              [routerLink]="['tracker']"
+              [routerLinkActiveOptions]=
+                "{ queryParams: 'ignored', matrixParams: 'exact', paths: 'exact', fragment: 'ignored' }"
+              [queryParams]="{ date: todayFormatted }"
+              routerLinkActive="selected"
+              lines="none"
+              detail="false">
               <ion-icon aria-hidden="true" slot="start" ios="happy" md="happy-sharp"></ion-icon>
               <ion-label>Tracker</ion-label>
             </ion-item>
@@ -27,7 +35,7 @@
           </ion-menu-toggle>
         </ion-list>
 
-        <ion-list *ngIf="isLoggedIn$ | async">
+        <ion-list>
           <ion-item lines="none" detail="false" (click)="logout()">
             <ion-icon aria-hidden="true" slot="start" ios="log-out" md="log-out-sharp"></ion-icon>
             <ion-label>Logout</ion-label>

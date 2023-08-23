@@ -1,27 +1,27 @@
 {
   "moods": [
     {
-      "date": "2023-08-12",
+      "id": "2023-08-12",
       "mood": "Cool",
       "note": "Went to a concert today, it was awesome!"
     },
     {
-      "date": "2023-08-13",
+      "id": "2023-08-13",
       "mood": "Happy",
       "note": "Spent the day with my family, we went to the park and ate ice cream"
     },
     {
-      "date": "2023-08-15",
+      "id": "2023-08-15",
       "mood": "Stressed",
       "note": "New project at work has some scary deadlines"
     },
     {
-      "date": "2023-08-17",
+      "id": "2023-08-17",
       "mood": "Relieved",
       "note": "Had a meeting with the management, deadlines are pushed for 2 months later. Yay!"
     },
     {
-      "date": "2023-08-18",
+      "id": "2023-08-18",
       "mood": "Delighted",
       "note": "Finally Friday! Had a new PR at the gym as well"
     }

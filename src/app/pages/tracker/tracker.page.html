@@ -11,19 +11,19 @@
   <ion-grid class="ion-text-center">
     <ion-row>
       <ion-col>
-        <h1>Today's Mood</h1>
+        <h1>{{ title$ | async }}</h1>
       </ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col style="height: 128px; display: flex"  class="ion-align-items-center ion-justify-content-center">
-        <ion-fab *ngIf="!selectedMood">
+        <ion-fab *ngIf="!selectedMoodIcon">
           <ion-fab-button (click)="openModal()">
             <ion-icon name="happy-outline"></ion-icon>
           </ion-fab-button>
         </ion-fab>
 
-        <img *ngIf="selectedMood" (click)="openModal()" class="selected-mood" [src]="selectedMood.src" [alt]="selectedMood.name">
+        <img *ngIf="selectedMoodIcon" (click)="openModal()" class="selected-mood" [src]="selectedMoodIcon.src" [alt]="selectedMoodIcon.name">
       </ion-col>
     </ion-row>
 
@@ -35,7 +35,9 @@
             labelPlacement="floating"
             maxlength="250"
             placeholder="Notes on how you feel..."
-            rows="3">
+            rows="3"
+            [(ngModel)]="note"
+          >
           </ion-textarea>
         </ion-item>
       </ion-col>
@@ -43,13 +45,13 @@
 
     <ion-row class="ion-margin-top">
       <ion-col size="4" offset="4">
-        <ion-button>Save Mood</ion-button>
+        <ion-button [disabled]="!selectedMoodIcon" (click)="save()">Save Mood</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
 
-<ion-modal (didDismiss)="selectedMoodIndex = -1">
+<ion-modal>
   <ng-template>
     <ion-header class="ion-text-center">
       <ion-toolbar>
@@ -58,14 +60,14 @@
         </ion-buttons>
         <ion-title>Pick a mood</ion-title>
         <ion-buttons slot="end">
-          <ion-button [disabled]="selectedMoodIndex === -1" [strong]="true" (click)="selectMood()">Confirm</ion-button>
+          <ion-button [disabled]="selectedMoodIndex === -1" [strong]="true" (click)="selectMoodIcon()">Confirm</ion-button>
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding">
       <ion-grid>
         <ion-row>
-          <ion-col *ngFor="let moodIcon of moods; let i = index" size="4" [class.selected]="selectedMoodIndex === i">
+          <ion-col *ngFor="let moodIcon of moodIcons; let i = index" size="4" [class.selected]="selectedMoodIndex === i">
             <img class="modal-mood" [src]="moodIcon.src" [alt]="moodIcon.name" (click)="selectedMoodIndex = i">
           </ion-col>
         </ion-row>

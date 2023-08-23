@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
-import { LoginData } from '@shared/models/login-data.modal';
+import { Store } from '@ngrx/store';
+
+import { LoginData } from '@shared/models/login-data.model';
+
+import { login } from '../../store/auth/auth.actions';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +12,7 @@ import { LoginData } from '@shared/models/login-data.modal';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-  constructor(private authService: AuthService) {
+  constructor(private store: Store) {
   }
 
   emailControl = new FormControl('test@test.com', [Validators.required, Validators.email]);
@@ -21,12 +24,13 @@ export class LoginPage {
   })
 
   onSubmit() {
-    if (!this.loginForm.valid) {return;
+    if (!this.loginForm.valid) {
+      return;
     }
 
     const loginData: LoginData = this.loginForm.value as LoginData;
 
-    this.authService.login(loginData);
+    this.store.dispatch(login({ loginData }));
   }
 
 }

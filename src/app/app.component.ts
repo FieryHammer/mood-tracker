@@ -1,9 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectIsLoggedIn } from './store/auth/auth.selectors';
+import { selectIsLoggedOut } from './store/auth/auth.selectors';
 import { IonMenu } from '@ionic/angular';
 import { AuthService } from './services/auth.service';
 import { Observable } from 'rxjs';
+import { format } from 'date-fns';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -12,9 +14,11 @@ import { Observable } from 'rxjs';
 export class AppComponent {
   @ViewChild(IonMenu) ionMenu: IonMenu;
 
-  isLoggedIn$: Observable<boolean> = this.store.select(selectIsLoggedIn);
+  isLoggedOut$: Observable<boolean> = this.store.select(selectIsLoggedOut);
 
-  constructor(private readonly store: Store, private readonly authService: AuthService) {}
+  todayFormatted = format(new Date(), 'yyyy-MM-dd');
+
+  constructor(private readonly store: Store, private readonly router: Router, private readonly authService: AuthService) {}
 
   logout() {
     this.authService.logout();
