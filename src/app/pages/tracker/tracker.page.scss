@@ -1,6 +1,11 @@
-img {
+.modal-mood {
   height: auto;
   width: auto;
+}
+
+.selected-mood {
+  height: 128px;
+  width: 128px;
 }
 
 ion-modal ion-col.selected {
