@@ -9,12 +9,6 @@
 
 <ion-content>
   <h1>Welcome, {{ username$ | async }}</h1>
-  <section *ngIf="quote$| async as quote" class="quote">
-    <p class="ion-text-justify">
-      <i>{{ quote.quote }}</i>
-    </p>
-    <h5 class="ion-text-center">- {{ quote.author }}</h5>
-  </section>
 
   <ion-grid class="ion-text-center">
     <ion-row>

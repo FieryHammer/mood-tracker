@@ -2,13 +2,14 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonModal } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { selectQueryParam } from '../../store/router/router.selectors';
-import { filter, map, Observable, take } from 'rxjs';
+import { filter, map, Observable, take, tap } from 'rxjs';
 import { format, isToday, parse } from 'date-fns';
 import { selectMood } from '../../store/moods/moods.selectors';
 import { MoodIcon } from '@shared/models/mood-icon.model';
-import { upsertMood } from '../../store/moods/moods.actions';
+import { addMood, updateMood } from '../../store/moods/moods.actions';
 import { Mood } from '@shared/models/mood.model';
 import { Router } from '@angular/router';
+import { Update } from '@ngrx/entity';
 
 @Component({
   selector: 'app-tracker',
@@ -75,8 +76,15 @@ export class TrackerPage implements OnInit {
         id: date,
         note: this.note}
 
-      this.store.dispatch(upsertMood({ mood: mood }));
-      this.router.navigate(['/home']);
+      this.store.select(selectMood).pipe(take(1), map(Boolean)).subscribe(moodExists => {
+        if (moodExists) {
+          const update: Update<Mood> = { id: mood.id, changes: mood };
+          this.store.dispatch(updateMood({ update: update }));
+        } else {
+          this.store.dispatch(addMood({ mood: mood }))
+        }
+      })
+
     })
   }
 
