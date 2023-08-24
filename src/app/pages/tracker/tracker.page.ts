@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonModal } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { selectQueryParam } from '../../store/router/router.selectors';
-import { filter, map, Observable, take, tap } from 'rxjs';
+import { filter, map, Observable, take } from 'rxjs';
 import { format, isToday, parse } from 'date-fns';
 import { selectMood } from '../../store/moods/moods.selectors';
 import { MoodIcon } from '@shared/models/mood-icon.model';
@@ -51,7 +51,7 @@ export class TrackerPage implements OnInit {
   selectedMoodIcon: MoodIcon | undefined = undefined;
   note: string = '';
 
-  constructor(private readonly store: Store, private readonly router: Router) {}
+  constructor(private readonly store: Store) {}
 
   ngOnInit() {
     this.store.select(selectMood)
