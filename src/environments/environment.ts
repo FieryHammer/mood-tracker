@@ -4,8 +4,6 @@
 
 export const environment = {
   production: false,
-  quotesApiUrl: 'https://api.api-ninjas.com/v1/quotes',
-  quotesApiKey: 'ts772YGveyNTiDb3d0Cvrsl3JSYFHilJaxIkGUv7',
   backendUrl: 'https://my-json-server.typicode.com/FieryHammer/mood-tracker',
   profilePath: '/profile',
   moodsPath: '/moods'
